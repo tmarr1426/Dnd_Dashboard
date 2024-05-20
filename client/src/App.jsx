@@ -2,7 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
-import { Auth, Login, Singup, Add, Dashboard, Stats } from "./components";
+import { Auth, Login, Singup, Add, Dashboard, Stats } from "./index";
 
 function App() {
   const [sessionToken, setSessionToken] = useState(false);
