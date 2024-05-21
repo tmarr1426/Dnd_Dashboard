@@ -4,7 +4,7 @@ import { Box, Card, CardContent, Typography, CardMedia } from "@mui/material";
 
 const Character_Card = () => {
   const [results, setResults] = useState([]);
-  // Fetches the Drive statistics for all children a parent has and creates a "Card" that houses the information for each child
+  // Fetches the Character Stats
   useEffect(() => {
     const getStats = async () => {
       try {
@@ -27,7 +27,7 @@ const Character_Card = () => {
     };
     getStats();
   }, []);
-  // Holds the information fetched above and creates a card that shows the information on the parent dashboard.
+  // Holds the information fetched above and creates a card for each Character associated to the user
   return (
     <div
       className="roboto-regular"
