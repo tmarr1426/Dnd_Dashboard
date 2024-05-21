@@ -2,7 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
-import { Auth, Login, Singup, Add, Dashboard, Stats, Nav } from "./index";
+import { Auth, Add, Dashboard, Stats, Nav } from "./index";
 
 function App() {
   const [sessionToken, setSessionToken] = useState(false);
@@ -44,16 +44,18 @@ function App() {
           <div>
             <Routes>
               <Route path="/" element={<Auth />} />
-              <Route path="/home" element={<Auth />} />
+              <Route
+                path="/home"
+                element={<Auth updateToken={updateToken} />}
+              />
             </Routes>
-            {/* <Auth updateToken={updateToken} /> */}
           </div>
         </>
       )}
       {sessionToken && (
         <>
           <div>
-            <Nav />
+            <Nav clearToken={clearToken} />
           </div>
           <Routes>
             <Route path="/" element={<Dashboard />} />
