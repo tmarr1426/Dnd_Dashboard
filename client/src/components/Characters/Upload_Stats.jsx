@@ -1,5 +1,4 @@
 import React from "react";
-import ImportokWizard from "@importok/react";
 
 const Upload_Stats = () => {
   const fields = {
