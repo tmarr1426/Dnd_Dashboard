@@ -55,13 +55,13 @@ const Dashboard = () => {
         <form>
           <h2>Create a Character</h2>
           <label>Character Name</label>
-          <input onChange={(e = handleChange("Character", e.target.value))} />
+          <input onChange={(e) => handleChange("Character", e.target.value)} />
           <label>Character Class</label>
-          <input onChange={(e = handleChange("Class", e.target.value))} />
+          <input onChange={(e) => handleChange("Class", e.target.value)} />
           <label>Player Name</label>
-          <input onChange={(e = handleChange("Player", e.target.value))} />
+          <input onChange={(e) => handleChange("Player", e.target.value)} />
           <label>Character Portrait</label>
-          <input onChange={(e = handleChange("Portrait", e.target.value))} />
+          <input onChange={(e) => handleChange("Portrait", e.target.value)} />
           <button type="button" onClick={handleSubmit}>
             Add Character
           </button>

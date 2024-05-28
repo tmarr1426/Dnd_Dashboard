@@ -13,7 +13,7 @@ const Nav = (props) => {
     >
       <img
         className="w3-bar-item"
-        src={HeaderImage}
+        // src={HeaderImage}
         style={{ height: "8em", left: "1em" }}
       />
       <Link to="/Dashboard">

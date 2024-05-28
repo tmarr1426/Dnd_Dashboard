@@ -7,7 +7,6 @@ import { Auth, Add, Dashboard, Stats, Nav } from "./index";
 function App() {
   const [sessionToken, setSessionToken] = useState(false);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,7 +38,7 @@ function App() {
 
   return (
     <>
-      {!sessionToken && (
+      {/* {!sessionToken && (
         <>
           <div>
             <Routes>
@@ -63,7 +62,16 @@ function App() {
             <Route path="/stats" element={<Stats />} />
           </Routes>
         </>
-      )}
+      )} */}
+      <div>
+        <Nav clearToken={clearToken} />
+      </div>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/stats" element={<Stats />} />
+        <Route path="/add" element={<Add />} />
+      </Routes>
     </>
   );
 }
