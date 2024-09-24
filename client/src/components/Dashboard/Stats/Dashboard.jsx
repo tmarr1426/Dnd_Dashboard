@@ -15,7 +15,7 @@ const Dashboard = () => {
         }}
       >
         <h1>Dashboard</h1>
-        <h3 style={{ marginBottom: "10%" }}>Character Stats at a glance</h3>
+        <h3 style={{ marginBottom: "10%" }}>Characters at a glance</h3>
         <Character_Card></Character_Card>
       </div>
     </>
