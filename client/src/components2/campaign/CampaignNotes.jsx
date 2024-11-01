@@ -1,87 +1,92 @@
 import React, { useState, useEffect } from "react";
 
 const CampaignNotes = () => {
-  const [Notes, setNotes] = useState("");
-  const [NPCs, setNPCs] = useState("");
-  const [sessionNumber, setSessionNumber] = useState(""); // State for session number
+  const [notes, setNotes] = useState({});
+  const [npcs, setNpcs] = useState({});
+  const [sessionNumber, setSessionNumber] = useState("");
   const [npcName, setNPCName] = useState("");
 
   const handleNotesSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
     const notesValue = e.target.elements.notes.value;
-
-    // Use the session number from the input as part of the key
     const newNoteKey = `Session ${sessionNumber} Notes`;
-
-    // Store the new note in local storage
     localStorage.setItem(newNoteKey, JSON.stringify(notesValue));
-
-    // Update the state
-    setNotes(notesValue);
-    setSessionNumber(""); // Clear session number input after submission
+    setSessionNumber("");
+    fetchNotes(); // Fetch notes after submission
   };
 
   const handleNPCSubmit = (e) => {
     e.preventDefault();
     const npcsValue = e.target.elements.npcs.value;
-    const newNPCSKey = `NPC Name: ${npcName}`;
-    localStorage.setItem(newNPCSKey, JSON.stringify(npcsValue));
-    setNPCs(npcsValue);
+    const newNPCKey = `NPC Name: ${npcName}`;
+    localStorage.setItem(newNPCKey, JSON.stringify(npcsValue));
     setNPCName("");
+    fetchNpcs(); // Fetch NPCs after submission
   };
 
-  useEffect(() => {
-    // Retrieve all notes when the component mounts
+  const fetchNotes = () => {
     const allCampaignNotes = {};
-    const allNPCNptes = {};
     Object.keys(localStorage).forEach((key) => {
       if (key.startsWith("Session")) {
         allCampaignNotes[key] = JSON.parse(localStorage.getItem(key));
       }
     });
+    setNotes(allCampaignNotes);
+  };
+
+  const fetchNpcs = () => {
+    const allNPCNotes = {};
     Object.keys(localStorage).forEach((key) => {
       if (key.startsWith("NPC Name")) {
-        allNPCNptes[key] = JSON.parse(localStorage.getItem(key));
+        allNPCNotes[key] = JSON.parse(localStorage.getItem(key));
       }
     });
-    console.log(allCampaignNotes); // Log all campaign notes
-    console.log(allNPCNptes);
+    setNpcs(allNPCNotes);
+  };
+
+  useEffect(() => {
+    fetchNotes();
+    fetchNpcs();
   }, []);
 
   return (
     <div>
-      <div>
-        <h1>Campaign Notes</h1>
-        <h3>Session:</h3>
+      <h1>Campaign Notes</h1>
+      {Object.keys(notes).length > 0 ? (
         <div>
-          <h2>Add Session Notes</h2>
-          <div>
-            <form onSubmit={handleNotesSubmit}>
-              <input
-                placeholder="Session Number"
-                value={sessionNumber}
-                onChange={(e) => setSessionNumber(e.target.value)} // Update session number state
-              />
-              <textarea
-                name="notes"
-                placeholder="Enter Campaign Notes"
-              ></textarea>
-              <button type="submit">Add Notes</button>
-            </form>
-            <form onSubmit={handleNPCSubmit}>
-              <input
-                placeholder="NPC Name"
-                value={npcName}
-                onChange={(e) => setNPCName(e.target.value)}
-              />
-              <textarea
-                name="npcs"
-                placeholder="Enter NPC Information"
-              ></textarea>
-              <button type="submit">Add NPC</button>
-            </form>
-          </div>
+          <h3>Session Notes:</h3>
+          {Object.keys(notes).map((key) => (
+            <div key={key}>
+              <strong>{key}:</strong> {notes[key]}
+            </div>
+          ))}
         </div>
+      ) : (
+        <p>No Notes available</p>
+      )}
+
+      <div>
+        <h2>Add Session Notes</h2>
+        <form onSubmit={handleNotesSubmit}>
+          <input
+            placeholder="Session Number"
+            value={sessionNumber}
+            onChange={(e) => setSessionNumber(e.target.value)}
+          />
+          <textarea name="notes" placeholder="Enter Campaign Notes"></textarea>
+          <button type="submit">Add Notes</button>
+        </form>
+
+        <h2>Add NPC</h2>
+        <form onSubmit={handleNPCSubmit}>
+          <input
+            placeholder="NPC Name"
+            value={npcName}
+            onChange={(e) => setNPCName(e.target.value)}
+          />
+          <textarea name="npcs" placeholder="Enter NPC Details"></textarea>
+          <button type="submit">Add NPC</button>
+        </form>
       </div>
     </div>
   );
