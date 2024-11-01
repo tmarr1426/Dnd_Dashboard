@@ -2,7 +2,19 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
-import { Auth, Add, Dashboard, Stats, Nav } from "./index";
+import {
+  Auth,
+  Login,
+  Singup,
+  Add,
+  Dashboard,
+  Stats,
+  Nav,
+  Upload,
+  CampaignNotes,
+  Characters,
+  NPCs,
+} from "./index";
 
 function App() {
   const [sessionToken, setSessionToken] = useState(false);
@@ -63,15 +75,27 @@ function App() {
           </Routes>
         </>
       )} */}
-      <div>
-        <Nav clearToken={clearToken} />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <div>
+          <Nav clearToken={clearToken} />
+        </div>
+        <div>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/campaign-notes" element={<CampaignNotes />} />
+            <Route path="/stats" element={<Stats />} />
+            <Route path="/add" element={<Add />} />
+          </Routes>
+          <Upload></Upload>
+        </div>
       </div>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/stats" element={<Stats />} />
-        <Route path="/add" element={<Add />} />
-      </Routes>
     </>
   );
 }

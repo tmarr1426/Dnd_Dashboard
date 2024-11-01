@@ -43,11 +43,9 @@ const Upload_Stats = () => {
 
   return (
     <>
-      <div
-        style={{ marginLeft: "15em", display: "flex", flexDirection: "column" }}
-      >
+      <div style={{ display: "flex", flexDirection: "column" }}>
         <form>
-          <h2>Upload Rolls</h2>
+          <h2>Upload Stats/Notes</h2>
           <input
             type="file"
             id="csvFileInput"

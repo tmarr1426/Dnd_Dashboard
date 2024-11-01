@@ -43,7 +43,6 @@ const Character_Card = () => {
       style={{
         display: "flex",
         flexDirection: "row",
-        flexWrap: "wrap",
         justifyContent: "center",
       }}
     >
