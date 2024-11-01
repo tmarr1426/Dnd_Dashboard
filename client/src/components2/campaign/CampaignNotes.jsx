@@ -64,7 +64,19 @@ const CampaignNotes = () => {
       ) : (
         <p>No Notes available</p>
       )}
-
+      <h1>NPC's</h1>
+      {Object.keys(npcs).length > 0 ? (
+        <div>
+          <h3>List of NPCS:</h3>
+          {Object.keys(npcs).map((key) => (
+            <div key={key}>
+              <strong>{key}:</strong> {npcs[key]}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>No Notes available</p>
+      )}
       <div>
         <h2>Add Session Notes</h2>
         <form onSubmit={handleNotesSubmit}>
