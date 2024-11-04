@@ -9,6 +9,7 @@ import {
   Add,
   Dashboard,
   Campaign,
+  Campaign_Form,
   Player_Dashboard,
   CharacterNotes,
   Nav,
@@ -93,6 +94,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/campaign-notes" element={<CampaignNotes />} />
             <Route path="/character-notes" element={<CharacterNotes />} />
+            <Route path="/campaign_form" element={<Campaign_Form />} />
             <Route path="/add" element={<Add />} />
           </Routes>
           <NPCs></NPCs>
