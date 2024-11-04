@@ -37,7 +37,7 @@ const CampaignNotes = () => {
   const fetchNpcs = () => {
     const allNPCNotes = {};
     Object.keys(localStorage).forEach((key) => {
-      if (key.startsWith("NPC Name")) {
+      if (key.startsWith("NPC")) {
         allNPCNotes[key] = JSON.parse(localStorage.getItem(key));
       }
     });
@@ -56,7 +56,7 @@ const CampaignNotes = () => {
         <div>
           <h3>Session Notes:</h3>
           {Object.keys(notes).map((key) => (
-            <div key={key}>
+            <div key={key} className="notes-values">
               <strong>{key}:</strong> {notes[key]}
             </div>
           ))}
@@ -69,7 +69,7 @@ const CampaignNotes = () => {
         <div>
           <h3>List of NPCS:</h3>
           {Object.keys(npcs).map((key) => (
-            <div key={key}>
+            <div key={key} className="npc-values">
               <strong>{key}:</strong> {npcs[key]}
             </div>
           ))}
@@ -79,7 +79,7 @@ const CampaignNotes = () => {
       )}
       <div>
         <h2>Add Session Notes</h2>
-        <form onSubmit={handleNotesSubmit}>
+        <form onSubmit={handleNotesSubmit} className="notes-form">
           <input
             placeholder="Session Number"
             value={sessionNumber}
@@ -90,7 +90,7 @@ const CampaignNotes = () => {
         </form>
 
         <h2>Add NPC</h2>
-        <form onSubmit={handleNPCSubmit}>
+        <form onSubmit={handleNPCSubmit} className="npc-form">
           <input
             placeholder="NPC Name"
             value={npcName}

@@ -8,7 +8,9 @@ import {
   Singup,
   Add,
   Dashboard,
-  Stats,
+  Campaign,
+  Player_Dashboard,
+  CharacterNotes,
   Nav,
   Upload,
   CampaignNotes,
@@ -90,9 +92,10 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/campaign-notes" element={<CampaignNotes />} />
-            <Route path="/stats" element={<Stats />} />
+            <Route path="/character-notes" element={<CharacterNotes />} />
             <Route path="/add" element={<Add />} />
           </Routes>
+          <NPCs></NPCs>
           <Upload></Upload>
         </div>
       </div>
