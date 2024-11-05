@@ -1,5 +1,4 @@
 import { useState } from "react";
-//test
 import Login from "./Login";
 import Signup from "./Signup";
 
@@ -51,7 +50,6 @@ const Auth = (props) => {
       ).json();
       console.log(response);
       props.updateToken(response.Token);
-      props.setUserType("parent");
     } catch (err) {
       console.log(err);
     }

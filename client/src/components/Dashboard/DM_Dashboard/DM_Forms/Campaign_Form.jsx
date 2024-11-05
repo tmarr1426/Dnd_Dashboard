@@ -3,7 +3,23 @@ import React, { useState } from "react";
 const Campaign_Form = () => {
   const [campaign, setCampaign] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    try {
+      const campaignResponse = await (
+        await fetch("", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            campaign: campaign,
+          }),
+        })
+      ).json();
+      console.log(campaignResponse);
+    } catch (err) {
+      console.log(err);
+    }
     e.preventDefault();
     localStorage.setItem("Campaign", JSON.stringify(campaign));
   };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import Campaign from "../DM_Dashboard/DM_Buttons/Create_Campaign";
+import Campaign from "./DM_Buttons/Campaign_Nav";
 import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 
 const Dashboard = () => {

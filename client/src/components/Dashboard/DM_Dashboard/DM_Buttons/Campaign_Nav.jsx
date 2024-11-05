@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const Create_Campaign = (props) => {
+const Campaign_Nav = () => {
   let location = useLocation();
   console.log(location);
   let backgroundColor = "#569AA6";
@@ -23,4 +23,4 @@ const Create_Campaign = (props) => {
   );
 };
 
-export default Create_Campaign;
+export default Campaign_Nav;
