@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@importok/react": "^0.10.6",
+    "@mui/material": "^5.15.19",
     "express": "^4.19.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
