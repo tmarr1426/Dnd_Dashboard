@@ -4,29 +4,38 @@ import { Box, Card, CardContent, Typography, CardMedia } from "@mui/material";
 
 const Character_Card = () => {
   const [results, setResults] = useState([]);
-  // Fetches the Character Stats
-  useEffect(() => {
-    const getStats = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:8081/stats/character_stats",
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
-            },
-          }
-        );
-        const json = await response.json();
 
-        console.log("jsonn", json);
+  const characters = [
+    {
+      id: 1,
+      name: "Valen Lostrestril",
+      race: "Wood Elf",
+      class: "Ranger",
+      classLevel: "Ranger 6",
+    },
+    {
+      id: 2,
+      name: "Huppert Mantlemorn",
+      race: "Human",
+      class: "Barbarian/Paladin",
+      classLevel: "Barbarian 5, Paladin 1",
+    },
+    {
+      id: 3,
+      name: "Pyra",
+      race: "Tiefling",
+      class: "Bard",
+      classLevel: "Bard 6",
+    },
+    {
+      id: 4,
+      name: "Seeker",
+      race: "Warforged",
+      class: "Monk",
+      classLevel: "Monk 6",
+    },
+  ];
 
-        setResults(json.newUserStats);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getStats();
-  }, []);
   // Holds the information fetched above and creates a card for each Character associated to the user
   return (
     <div
@@ -34,16 +43,15 @@ const Character_Card = () => {
       style={{
         display: "flex",
         flexDirection: "row",
-        flexWrap: "wrap",
         justifyContent: "center",
       }}
     >
-      {results.map((obj) => {
+      {characters.map((id) => {
         return (
           <Card
-            key={obj.id}
+            key={characters.id}
             style={{
-              width: "40em",
+              width: "25em",
               margin: "1em",
               boxShadow: "4px 4px 4px #000000",
               borderRadius: "1em",
@@ -53,7 +61,7 @@ const Character_Card = () => {
             <Box sx={{ display: "flex", flexDirection: "row" }}>
               <CardContent sx={{ flex: "1 0 auto" }}>
                 <Box>
-                  <CardMedia>{obj.portrait}</CardMedia>
+                  {/* <CardMedia>{obj.portrait}</CardMedia> */}
                   <Typography
                     sx={{
                       fontSize: 32,
@@ -64,23 +72,30 @@ const Character_Card = () => {
                     color="#494888"
                     gutterBottom
                   >
-                    {obj.FirstName}
+                    {id.name}
                   </Typography>
                   <Typography
                     sx={{ fontSize: 26, textAlign: "left" }}
                     color="#494888"
                     gutterBottom
                   >
-                    Class {obj.characterClass}
+                    Species: {id.race}
                   </Typography>
                   <Typography
                     sx={{ fontSize: 26, textAlign: "left" }}
                     color="#494888"
                     gutterBottom
                   >
-                    {obj.title}
+                    Class: {id.class}
                   </Typography>
                   <Typography
+                    sx={{ fontSize: 26, textAlign: "left" }}
+                    color="#494888"
+                    gutterBottom
+                  >
+                    Level: {id.classLevel}
+                  </Typography>
+                  {/* <Typography
                     sx={{ fontSize: 26, textAlign: "left" }}
                     color="#494888"
                     gutterBottom
@@ -93,7 +108,7 @@ const Character_Card = () => {
                     gutterBottom
                   >
                     Total Natural 1 rolls: {obj.nat1Rolls}
-                  </Typography>
+                  </Typography> */}
                 </Box>
               </CardContent>
               <Box></Box>
@@ -106,3 +121,27 @@ const Character_Card = () => {
 };
 
 export default Character_Card;
+
+// Fetches the Character Stats
+// useEffect(() => {
+//   const getStats = async () => {
+//     try {
+//       const response = await fetch(
+//         "http://localhost:8081/stats/character_stats",
+//         {
+//           headers: {
+//             Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
+//           },
+//         }
+//       );
+//       const json = await response.json();
+
+//       console.log("jsonn", json);
+
+//       setResults(json.newUserStats);
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+//   getStats();
+// }, []);

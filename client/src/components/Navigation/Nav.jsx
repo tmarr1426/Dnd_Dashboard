@@ -8,34 +8,47 @@ const Nav = (props) => {
 
   return (
     <div
-      className="w3-card-2 w3-sidebar w3-bar-block w3-display-left roboto-regular gradient-vertical"
-      style={{ width: "15em" }}
+    // style={{
+    //   display: "flex",
+    //   flexDirection: "row",
+    //   justifyItems: "center",
+    //   width: "30em",
+    // }}
     >
-      <img
-        className="w3-bar-item"
-        src={HeaderImage}
-        style={{ height: "8em", left: "1em" }}
-      />
       <Link to="/Dashboard">
         <button
           style={{
             background:
               location.pathname.includes("/Dashboard") && backgroundColor,
+            margin: "1em",
           }}
         >
           Home
         </button>
       </Link>
-      <Link to="/stats">
+      <Link to="/character-notes">
         <button
           style={{
-            background: location.pathname.includes("/stats") && backgroundColor,
+            background:
+              location.pathname.includes("/character-notes") && backgroundColor,
+            margin: "1em",
           }}
         >
-          View Character Stats
+          View Character Notes
         </button>
       </Link>
-      <Link to="/add">
+      <Link to="/campaign-notes">
+        <button
+          style={{
+            background:
+              location.pathname.includes("/campaign-notes") && backgroundColor,
+            margin: "1em",
+          }}
+        >
+          Campaign Notes
+        </button>
+      </Link>
+      {/* <Link to="/add">
         <button
           style={{
             background: location.pathname.includes("/add") && backgroundColor,
@@ -45,12 +58,12 @@ const Nav = (props) => {
         </button>
       </Link>
       <button
-        className="w3-display-bottomleft"
+        // className="w3-display-bottomleft"
         onClick={props.clearToken}
         style={{ marginBottom: "2em", marginLeft: "3.00em" }}
       >
         Logout
-      </button>
+      </button> */}
     </div>
   );
 };

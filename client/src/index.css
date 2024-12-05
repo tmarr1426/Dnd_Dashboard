@@ -66,3 +66,29 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.notes-values {
+  margin: 5px;
+  border: 5px solid #646cff;
+  border-radius: 5px;
+  background-color: #646cff;
+}
+
+.npc-values {
+  margin: 5px;
+  border: 5px solid #646cff;
+  border-radius: 5px;
+  background-color: #646cff;
+}
+
+.notes-form {
+  display: flex;
+  flex-direction: column;
+  margin: 1vh;
+}
+
+.npc-form {
+  display: flex;
+  flex-direction: column;
+  margin: 1vh;
+}
