@@ -7,14 +7,7 @@ const Nav = (props) => {
   let backgroundColor = "#569AA6";
 
   return (
-    <div
-    // style={{
-    //   display: "flex",
-    //   flexDirection: "row",
-    //   justifyItems: "center",
-    //   width: "30em",
-    // }}
-    >
+    <div className="nav">
       <Link to="/Dashboard">
         <button
           style={{
@@ -48,22 +41,6 @@ const Nav = (props) => {
           Campaign Notes
         </button>
       </Link>
-      {/* <Link to="/add">
-        <button
-          style={{
-            background: location.pathname.includes("/add") && backgroundColor,
-          }}
-        >
-          Create Character
-        </button>
-      </Link>
-      <button
-        // className="w3-display-bottomleft"
-        onClick={props.clearToken}
-        style={{ marginBottom: "2em", marginLeft: "3.00em" }}
-      >
-        Logout
-      </button> */}
     </div>
   );
 };

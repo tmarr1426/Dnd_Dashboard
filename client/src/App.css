@@ -25,3 +25,16 @@
 .read-the-docs {
   color: #888;
 }
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  text-align: left;
+}
+
+.nav button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}

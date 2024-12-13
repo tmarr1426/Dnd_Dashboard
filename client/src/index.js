@@ -12,6 +12,7 @@ import NPCs from "./components2/characters/NPCS";
 import CharacterNotes from "./components/Dashboard/DM_Dashboard/CharacterNotes";
 import Nav from "./components/Navigation/Nav";
 import Upload from "./components/Characters/Upload_Stats";
+import Tag from "./components2/system/tags";
 
 export {
   Auth,
@@ -28,4 +29,5 @@ export {
   CampaignNotes,
   Characters,
   NPCs,
+  Tag,
 };

@@ -17,6 +17,7 @@ import {
   CampaignNotes,
   Characters,
   NPCs,
+  Tag,
 } from "./index";
 
 function App() {
@@ -97,6 +98,7 @@ function App() {
             <Route path="/campaign_form" element={<Campaign_Form />} />
             <Route path="/add" element={<Add />} />
           </Routes>
+          <Tag></Tag>
           <NPCs></NPCs>
           <Upload></Upload>
         </div>
