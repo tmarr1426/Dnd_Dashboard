@@ -20,7 +20,7 @@ router.post("/create", async (req, res) => {
     });
   } catch (err) {
     res.status(500).json({
-      Error: err.code === 11000 ? "Unable to create room" : err,
+      Error: err.code === 11000 ? "Unable to create campaign" : err,
     });
   }
 });

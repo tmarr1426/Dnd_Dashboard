@@ -1,53 +1,48 @@
-//? Importing dotenv, and applying it (giving us access to process.env)
+// Sets the .ENV file for safe access and encryption
 require("dotenv").config();
-
-//? Importing Express
+// Creates all variables that require a dependency to use the dependency.
 const express = require("express");
-
-//? Assign Express
-const app = express();
-
-//? cors
 const cors = require("cors");
+const mongoose = require("mongoose");
+// Sets the MONGODB Variable for the URL and the Databases name
+const MONGODB = process.env.MONGO_DB_URL + process.env.DB_NAME;
 
-//? Import controller/s
-const {
-  userController,
-  statsController,
-  parentController,
-  recoveryController,
-  settingController,
-} = require("./controllers/index");
+const app = express();
+// Sets controller endpoints
+const userController = require("./controllers/user_controller");
+const notesController = require("./controllers/notes_controller");
+const campaignController = require("./controllers/campaign_controller");
+// Creates middleware validation
+const validate = require("./middleware/validate");
 
-//? Import validation middleware
-const validateSession = require("./middleware/validate-session");
+mongoose.connect(MONGODB);
 
-//? Assigning a variable from .env, with fallback port of 8080
-//* || - OR/DEFAULT operator
-const PORT = process.env.PORT || 8080;
+const db = mongoose.connection;
+// Connects to DB
+db.once("open", async () => {
+  console.log("*".repeat(10));
+  console.log(`Connected successfully to database:\n${MONGODB}`);
+  console.log("*".repeat(10));
+});
 
-//? Middleware to allow JSON to be accepted by our HTTP server
+db.on("error", (err) => console.log(`Error ${err}`));
+
+const PORT = process.env.PORT;
+
 app.use(express.json());
 
-//? importing cors to use backend on browser
-app.use(cors());
-
-//? Allow parsing of query strings
 app.use(express.urlencoded({ extended: true }));
 
-//? Using the controllers
-app.use("/parent", parentController);
-// user needs token from the parent signup
+app.use(cors());
+// Sets app to use the url and the schema associated.
 app.use("/user", userController);
-app.use("/recovery", recoveryController);
-app.use(validateSession);
-app.use("/settings", settingController);
-app.use("/stats", statsController);
-
-//? Initial spin up of the Express server
+//app.use(validate);
+app.use(validate);
+app.use("/campaign", campaignController);
+app.use("/notes", notesController);
+// Connects to the server.
 app.listen(PORT, () => {
   try {
-    //* Repeats string x int argument
     console.log("*".repeat(10));
     console.log(`Server is connected: ${PORT}`);
   } catch (err) {
