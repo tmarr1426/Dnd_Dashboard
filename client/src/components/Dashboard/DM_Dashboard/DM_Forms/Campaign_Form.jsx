@@ -33,10 +33,13 @@ const Campaign_Form = (props) => {
       <form onSubmit={handleSubmit} className="campaign_form">
         <input
           placeholder="Campaign Name"
-          value={campaign}
+          value={campaignName}
           onChange={(e) => setCampaignName(e.target.value)}
         />
-        <input onChange={(e) => setDescription(e.target.value)} />
+        <input
+          placeholder="Short Description"
+          onChange={(e) => setDescription(e.target.value)}
+        />
         <button type="submit">Create Campaign</button>
       </form>
     </div>

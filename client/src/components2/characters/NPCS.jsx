@@ -8,17 +8,6 @@ const NPCS = () => {
   const npclist = [];
   let npcId = 1;
 
-  function addNPC(name, locationMet, description) {
-    const newNPC = {
-      id: npcId++,
-      name: name,
-      locationMet: locationMet,
-      description: description,
-    };
-    npclist.push(newNPC);
-    console.log("Added new NPC: ${name}");
-  }
-
   const addNPC = async () => {
     try {
       const json = await (
@@ -41,6 +30,7 @@ const NPCS = () => {
       console.log(err);
     }
   };
+
   return (
     <div>
       {npclist.map((id) => {
