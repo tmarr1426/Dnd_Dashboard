@@ -5,6 +5,27 @@ import Campaign from "./DM_Buttons/Campaign_Nav";
 const Dashboard = () => {
   const [campaigns, setCampaigns] = useState({}); // State to store campaigns
 
+  useEffect(() => {
+    console.log("This will show when rooms component mounts");
+    const getAllCampaigns = async () => {
+      try {
+        const result = await (
+          await fetch("http://localhost:8080/campaigns/all/", {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
+            },
+          })
+        ).json();
+        console.log("All Campaigns", result);
+        setAllCampaigns(result.Results);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    getAllCampaigns();
+  }, []);
+
   const fetchCampaigns = () => {
     const allCampaigns = {};
     Object.keys(localStorage).forEach((key) => {

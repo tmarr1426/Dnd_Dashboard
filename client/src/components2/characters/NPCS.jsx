@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Card, CardContent, Typography, CardMedia } from "@mui/material";
 
 const NPCS = () => {
+  const [npcName, setNpcName] = useState("");
+  const [location, setLocation] = useState("");
+  const [description, setDescription] = useState("");
   const npclist = [];
   let npcId = 1;
 
@@ -16,6 +19,28 @@ const NPCS = () => {
     console.log("Added new NPC: ${name}");
   }
 
+  const addNPC = async () => {
+    try {
+      const json = await (
+        await fetch("http://localhost:8080/npcs/create/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
+          },
+          body: JSON.stringify({
+            user_id: props.user_id,
+            campaign: props.campaignName,
+            npc: npcName,
+            location: location,
+            description: description,
+          }),
+        })
+      ).json();
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div>
       {npclist.map((id) => {
