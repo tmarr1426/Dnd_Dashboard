@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 
-const Campaign_Form = () => {
-  const [campaign, setCampaign] = useState([]);
+const Campaign_Form = (props) => {
+  const [campaignName, setCampaignName] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleSubmit = async (e) => {
     try {
       const campaignResponse = await (
-        await fetch("", {
+        await fetch("http://localhost:8080/campaigns/create/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
           },
           body: JSON.stringify({
-            campaign: campaign,
+            campaign: campaignName,
+            description: description,
+            addedUsers: [props.userId],
           }),
         })
       ).json();
@@ -21,7 +25,7 @@ const Campaign_Form = () => {
       console.log(err);
     }
     e.preventDefault();
-    localStorage.setItem("Campaign", JSON.stringify(campaign));
+    localStorage.setItem("Campaign", JSON.stringify(campaignName));
   };
 
   return (
@@ -29,8 +33,12 @@ const Campaign_Form = () => {
       <form onSubmit={handleSubmit} className="campaign_form">
         <input
           placeholder="Campaign Name"
-          value={campaign}
-          onChange={(e) => setCampaign(e.target.value)}
+          value={campaignName}
+          onChange={(e) => setCampaignName(e.target.value)}
+        />
+        <input
+          placeholder="Short Description"
+          onChange={(e) => setDescription(e.target.value)}
         />
         <button type="submit">Create Campaign</button>
       </form>
