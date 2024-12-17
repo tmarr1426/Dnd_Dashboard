@@ -36,7 +36,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 // Sets app to use the url and the schema associated.
 app.use("/user", userController);
-//app.use(validate);
 app.use(validate);
 app.use("/campaign", campaignController);
 app.use("/notes", notesController);

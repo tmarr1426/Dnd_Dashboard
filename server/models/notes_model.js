@@ -25,4 +25,4 @@ const NotesSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("message", MessageSchema);
+module.exports = mongoose.model("notes", NotesSchema);

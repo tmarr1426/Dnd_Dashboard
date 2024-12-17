@@ -2,7 +2,7 @@
 const router = require("express").Router();
 
 // Creates variable to pull the user Schema
-const Message = require("../models/user_model");
+const Notes = require("../models/user_model");
 
 // Uses Bcrypt to encrpyt the password
 const bcrypt = require("bcryptjs");
@@ -19,12 +19,12 @@ router.post("/signup", async (req, res) => {
     const user = new User({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
+      username: req.body.username,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 12),
     });
-    //// console.log("gothere1");
     const newUser = await user.save();
-    //// console.log("gothere2");
+   console.log(user)
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7 days",
     });

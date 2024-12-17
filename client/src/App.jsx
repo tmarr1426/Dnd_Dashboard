@@ -32,20 +32,17 @@ function App() {
   }, []);
 
   // Sets the Token for the user session in the localstorage of the website.
-  const updateToken = (token, userType) => {
-    console.log("Token Updated", token);
-
+  const updateToken = (token) => {
+    console.log("Token Updated");
     localStorage.setItem("MyToken", token);
-
     setSessionToken(token);
   };
 
   // Clears the Token in the local storage so a new user can sign on.
   const clearToken = () => {
     console.log("Token Cleared");
-    localStorage.clear();
+    localStorage.removeItem("MyToken");
     setSessionToken("");
-    navigate("/");
   };
 
   const goHome = () => {
@@ -54,11 +51,11 @@ function App() {
 
   return (
     <>
-      {/* {!sessionToken && (
+      {!sessionToken && (
         <>
           <div>
             <Routes>
-              <Route path="/" element={<Auth />} />
+              <Route path="/" element={<Auth updateToken={updateToken} />} />
               <Route
                 path="/home"
                 element={<Auth updateToken={updateToken} />}
@@ -69,17 +66,7 @@ function App() {
       )}
       {sessionToken && (
         <>
-          <div>
-            <Nav clearToken={clearToken} />
-          </div>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/stats" element={<Stats />} />
-          </Routes>
-        </>
-      )} */}
-      <div
+          <div
         style={{
           display: "flex",
           flexDirection: "column",
@@ -103,6 +90,9 @@ function App() {
           <Upload></Upload>
         </div>
       </div>
+        </>
+      )}
+      
     </>
   );
 }
