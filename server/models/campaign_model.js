@@ -17,11 +17,11 @@ const CampaignSchema = new mongoose.Schema({
     required: true,
     ref: User,
   },
-  tags: {
-    type: Array,
-    required: true,
-    ref: Tags,
-  },
+  // tags: {
+  //   type: Array,
+  //   required: true,
+  //   ref: Tags,
+  // },
 });
 
-module.exports = mongoose.model("rooms", RoomSchema);
+module.exports = mongoose.model("campaigns", CampaignSchema);
