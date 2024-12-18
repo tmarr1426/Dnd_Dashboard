@@ -1,3 +1,14 @@
+/*
+Color Palette:
+Background: #1A1A2E
+Main: #0F3460
+Secondary: #E94560
+Tertiary: #F9F9F9
+Extra: #16213E
+
+Inverse for Night Mode
+*/
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -36,5 +47,20 @@
 
 .nav button {
   border: none;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #e94560;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 50%;
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  background-color: #16213ebb;
+  border: 5px solid black;
+  border-radius: 25px;
+  padding: 2%;
 }

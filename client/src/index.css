@@ -1,3 +1,13 @@
+/*
+Color Palette:
+Background: #b0acb0
+Main: #2f404d
+Secondary: #3d898d
+Tertiary: #e2dddf
+Extra: #85ebd9
+
+Switch Backgorund and Main for Night Mode
+*/
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -28,6 +38,13 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #b0acb0;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #2f404d;
+  }
 }
 
 h1 {
@@ -42,12 +59,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #3d898d;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #85ebd9;
 }
 button:focus,
 button:focus-visible {
@@ -56,8 +73,8 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #2f404d;
+    background-color: #b0acb0;
   }
   a:hover {
     color: #747bff;
